@@ -19,8 +19,7 @@ function draw() {
   fill(rectColor);
     
   for (var i = 0; i < x.length; i++){
-    if(mouseIsPressed && (mouseX > x[i]) && (mouseX < x[i]) &&
-    (mouseY > [i]+50) && (mouseY < [i]+50))
+    if(mouseIsPressed)
       {
       fill(0);
       rect(x[i],50,50,50);
@@ -29,11 +28,7 @@ function draw() {
  
     else {
       fill(colors[i]);
-      rect(x[i],50,50,50);
+        rect(x[i],50,50,50);
       }
   }
 }
-
-      
-
-
