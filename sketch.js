@@ -21,7 +21,7 @@ function draw() {
   text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);
     
   for (var i = 0; i < x.length; i++){
-    if(mouseIsPressed && (mouseX > (x[i]/2)) && (mouseX <       (x[i]/2+50)) && (mouseY > (x[i]/2)) && (mouseY < (x[i]/2+50))){
+    if(mouseIsPressed && (mouseX > (x[i]/2)) && (mouseX <(x[i]/2+50)) && (mouseY > (50/2)) && (mouseY < (50+25))){
       fill(0);
       rect(x[i],50,50,50);
         
@@ -32,4 +32,6 @@ function draw() {
       rect(x[i],50,50,50);
       }
   }
-}   
+}      
+
+
