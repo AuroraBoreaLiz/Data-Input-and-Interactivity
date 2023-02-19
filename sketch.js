@@ -20,19 +20,19 @@ function draw() {
   
   for (var i = 0; i < x.length; i++){
     fill(colors[i]);
-    rect(x[i],50,50,50);
-  }
-  
+    
   if (mouseIsPressed === true){
      
     squareTime(mX,mY,c);
       
     }
     else {
-      
-    rect(0,0,50,50);
+    rect(x[i],50,50,50);
       
     }
+  }
+  
+
 
  
 }
