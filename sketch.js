@@ -1,4 +1,5 @@
 var table;
+var rectColor = 150;
 
 function preload() {
   table = loadTable("names.csv", "csv", "header");
@@ -14,36 +15,23 @@ function draw() {
   noStroke();
   var x = table.getColumn("x");
   var colors = table.getColumn("color");
-  var mX = mouseX;
-  var mY = mouseY;
   var c = map(mouseX, 0, width, 0, 255);
-  
-  for (var i = 0; i < x.length; i++){
-    fill(colors[i]);
+  fill(rectColor);
     
-  if (mouseIsPressed === true){
-     
-    squareTime(mX,mY,c);
-      
+  if(mouseIsPressed && (mouseX > 100) && (mouseX < 180) &&
+    (mouseY > 100) && (mouseY < 180))
+    {
+      for (var i = 0; i < x.length; i++){
+        fill(0);
+        rect(x[i],50,50,50);
+        
+    } 
     }
-    else {
-    rect(x[i],50,50,50);
+  else {
       
-    }
-  }
-  
-
-
- 
-}
-
-function squareTime(mX,mY,c){
-  push();
-    translate(mX,mY);
-    var r = frameCount * 0.05;
-    rotate(r); 
-    fill(0,c,255-c);  
-    rect(mX,mY,50,50);
-  pop();
-
+      for (var i = 0; i < x.length; i++){
+        fill(colors[i]);
+        rect(x[i],50,50,50);
+            }
+          }
 }
