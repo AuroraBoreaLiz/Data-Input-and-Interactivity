@@ -14,6 +14,9 @@ function draw() {
   background(220);
   noStroke();
   var x = table.getColumn("x");
+  var y = 50
+  var boxX = 50
+  var boxY = 50
   var colors = table.getColumn("color");
   var c = map(mouseX, 0, width, 0, 255);
   fill(rectColor);
@@ -21,15 +24,15 @@ function draw() {
   text("(" + mouseX + ", " + mouseY + ")", mouseX, mouseY);
     
   for (var i = 0; i < x.length; i++){
-    if(mouseIsPressed && (mouseX > (x[i]-25)) && (mouseX < (x[i]+25)) && (mouseY > (50/2)) && (mouseY < (50+25))){
+    if(mouseIsPressed && (mouseX > (x[i]-25)) && (mouseX < (x[i]+25)) && (mouseY > (boxY-25)) && (mouseY < (boxY+25))){
       fill(0);
-      rect(x[i],50,50,50);
+      rect(x[i],y,boxX,boxY);
         
       } 
  
     else {
       fill(colors[i]);
-      rect(x[i],50,50,50);
+      rect(x[i],y,boxX,boxY);
       }
   }
 }      
