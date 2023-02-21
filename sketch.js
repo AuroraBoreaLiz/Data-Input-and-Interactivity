@@ -30,15 +30,13 @@ function draw() {
       rectColor = colors[i];
       fill(rectColor);
       rect(x[i],y,rectWidth,rectHeight,rectRadius, rectRadius, rectRadius, rectRadius);
-      mouseFill(x,y,rectWidth,rectHeight,rectRadius,colors,c);
+      mouseFill(x,y,i,rectWidth,rectHeight,rectRadius,colors,c);
   }    
     
 }
 
 
-function mouseFill(x,y,rectWidth,rectHeight,rectRadius,colors,c){
-
-  for (var i = 0; i < x.length; i++){
+function mouseFill(x,y,i,rectWidth,rectHeight,rectRadius,colors,c){
       if(mouseIsPressed && 
          (mouseX >= (x[i]-25)) && (mouseX <= (x[i]+25)) && 
          (mouseY >= (25)) && (mouseY <= (75)))
@@ -47,5 +45,5 @@ function mouseFill(x,y,rectWidth,rectHeight,rectRadius,colors,c){
         rect(x[i],y,rectWidth,rectHeight,rectRadius, rectRadius, rectRadius, rectRadius);
 
     }
-  }     
+    
 }
