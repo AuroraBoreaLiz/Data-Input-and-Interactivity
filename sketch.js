@@ -2,10 +2,9 @@ function preload() {
   table = loadTable("data.csv", "csv", "header");
 }
 
-var rectColor1 = [150, 55, 25];
-var rectColor2 = [25, 35, 255];
-var rectColor3 = [75, 0, 45];
-var fillColor = [];
+var fillColor1 = [];
+var fillColor2 = [];
+var fillColor3 = [];
 
 var table;
 
@@ -17,11 +16,17 @@ function setup() {
 function draw() {
   var rectSize = table.getColumn("rectSize");
   
+  var rectColor1 = table.getColumn("rectColor1");
+  var rectColor2 = table.getColumn("rectColor2");
+  var rectColor3 = table.getColumn("rectColor3");
   for (var i = 0; i < rectSize.length; i++) {
     push();
       x = rectSize[i];
-      mouseFill(x);
-      fill(fillColor[i]);
+      c1 = rectColor1[i];
+      c2 = rectColor2[i];
+      c3 = rectColor3[i];
+      mouseFill(x,c1,c2,c3);
+      fill(fillColor1,fillColor2,fillColor3);
       rect(x, x, 80, 80);
     pop();
     
@@ -30,7 +35,7 @@ function draw() {
   
 }
 
-function mouseFill(x) {
+function mouseFill(x,i,c1,c2,c3) {
   if (
     mouseIsPressed &&
     mouseX > 50 &&
@@ -40,11 +45,14 @@ function mouseFill(x) {
   ) {
     push();
     print("First Box")
-      fillColor[0] = 255;
-      //rect(x, x, 80, 80);
+      fillColor1 = 255;
+      fillColor2 = 255;
+      fillColor3 = 255;
     push();
   } else {
-    fillColor[0] = rectColor1;
+    fillColor1 = c1;
+    fillColor2 = c2;
+    fillColor3 = c3;
   }
 
   if (
@@ -56,11 +64,14 @@ function mouseFill(x) {
   ) {
     push();
       print("Second Box")
-      fillColor[1] = 255;
-      //rect(x, x, 80, 80);
+      fillColor1 = 255;
+      fillColor2 = 255;
+      fillColor3 = 255;
     push();
   } else {
-    fillColor[1] = rectColor2;
+    fillColor1 = c1;
+    fillColor2 = c2;
+    fillColor3 = c3;
   }
 
   if (
@@ -72,10 +83,13 @@ function mouseFill(x) {
   ) {
     push();
       print("Third Box")
-      fillColor[2] = 255;
-      //rect(x, x, 80, 80);
+      fillColor1 = 255;
+      fillColor2 = 255;
+      fillColor3 = 255;
     push();
   } else {
-    fillColor[2] = rectColor3;
+    fillColor1 = c1;
+    fillColor2 = c2;
+    fillColor3 = c3;
   }
 }
