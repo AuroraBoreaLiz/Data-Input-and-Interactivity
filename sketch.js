@@ -2,9 +2,10 @@ function preload() {
   table = loadTable("data.csv", "csv", "header");
 }
 
-var fillColor1 = [];
-var fillColor2 = [];
-var fillColor3 = [];
+var rectColor1 = [150, 55, 25];
+var rectColor2 = [25, 35, 255];
+var rectColor3 = [75, 0, 45];
+var fillColor = [];
 
 var table;
 
@@ -25,8 +26,8 @@ function draw() {
       c1 = rectColor1[i];
       c2 = rectColor2[i];
       c3 = rectColor3[i];
-      mouseFill(x,c1,c2,c3);
-      fill(fillColor1,fillColor2,fillColor3);
+      mouseFill(x,i);
+      fill(fillColor[i]);
       rect(x, x, 80, 80);
     pop();
     
@@ -35,7 +36,7 @@ function draw() {
   
 }
 
-function mouseFill(x,i,c1,c2,c3) {
+function mouseFill(x,i) {
   if (
     mouseIsPressed &&
     mouseX > 50 &&
@@ -45,14 +46,11 @@ function mouseFill(x,i,c1,c2,c3) {
   ) {
     push();
     print("First Box")
-      fillColor1 = 255;
-      fillColor2 = 255;
-      fillColor3 = 255;
+      fillColor[0] = 255;
+      //rect(x, x, 80, 80);
     push();
   } else {
-    fillColor1 = c1;
-    fillColor2 = c2;
-    fillColor3 = c3;
+    fillColor[0] = rectColor1[i];
   }
 
   if (
@@ -64,14 +62,11 @@ function mouseFill(x,i,c1,c2,c3) {
   ) {
     push();
       print("Second Box")
-      fillColor1 = 255;
-      fillColor2 = 255;
-      fillColor3 = 255;
+      fillColor[1] = 255;
+      //rect(x, x, 80, 80);
     push();
   } else {
-    fillColor1 = c1;
-    fillColor2 = c2;
-    fillColor3 = c3;
+    fillColor[1] = rectColor2[i];
   }
 
   if (
@@ -83,13 +78,10 @@ function mouseFill(x,i,c1,c2,c3) {
   ) {
     push();
       print("Third Box")
-      fillColor1 = 255;
-      fillColor2 = 255;
-      fillColor3 = 255;
+      fillColor[2] = 255;
+      //rect(x, x, 80, 80);
     push();
   } else {
-    fillColor1 = c1;
-    fillColor2 = c2;
-    fillColor3 = c3;
+    fillColor[2] = rectColor3[i];
   }
 }
