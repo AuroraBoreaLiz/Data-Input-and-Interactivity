@@ -3,20 +3,26 @@ function preload() {
 }
 
 var table;
+var y = [];
+n = 30;
 
 function setup() {
   createCanvas(400, 400);
   background(0,0,35);
+  for(var i=0; i<n; i++) {
+    y[i] = random(height);
+  }
+  
 }
 
 function draw() {
-  var starMap = table.getColumn("starLocation");
+  var starMap1 = table.getColumn("starLocation1");
   
-  for (var i = 0; i < starMap.length; i++) { 
-    starTranslate = starMap[i];
+  for (var i = 0; i < starMap1.length; i++) { 
+    starTranslate1 = starMap1[i];
     push();
-      translate(starTranslate,starTranslate);
-      star(0, 0, 30, 70, 6);
+      translate(starTranslate1,y[i]);
+      star(0, 0, 10, 8, 6);
     pop();
   }
   
