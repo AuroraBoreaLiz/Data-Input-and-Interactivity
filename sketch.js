@@ -10,12 +10,11 @@ function setup() {
 function draw() {
   for (var i = 0; i < rectSize.length; i++) {
     push();
-    print(fillColor,"filling",i)
-    x = rectSize[i];
-    mouseFill(x);
-    
-    fill(fillColor[i]);
-    rect(x, x, 80, 80);
+      //print(fillColor,"filling",i)
+      x = rectSize[i];
+      mouseFill(x);
+      fill(fillColor[i]);
+      rect(x, x, 80, 80);
     pop();
     
     
@@ -33,8 +32,8 @@ function mouseFill(x) {
   ) {
     push();
     print("First Box")
-    fillColor[0] = 255;
-    //rect(x, x, 80, 80);
+      fillColor[0] = 255;
+      //rect(x, x, 80, 80);
     push();
   } else {
     fillColor[0] = rectColor[0];
@@ -48,9 +47,9 @@ function mouseFill(x) {
     mouseY < 230
   ) {
     push();
-    print("Second Box")
-    fillColor[1] = 255;
-    //rect(x, x, 80, 80);
+      print("Second Box")
+      fillColor[1] = 255;
+      //rect(x, x, 80, 80);
     push();
   } else {
     fillColor[1] = rectColor[1];
@@ -64,12 +63,12 @@ function mouseFill(x) {
     mouseY < 330
   ) {
     push();
-    print("Third Box",fillColor)
-    fillColor[2] = 255;
-    //rect(x, x, 80, 80);
+      print("Third Box")
+      fillColor[2] = 255;
+      //rect(x, x, 80, 80);
     push();
   } else {
-  fillColor[2] = rectColor[2];
+    fillColor[2] = rectColor[2];
   }
 }
 /*
