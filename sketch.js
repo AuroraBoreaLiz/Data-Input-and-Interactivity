@@ -7,6 +7,8 @@ var y = [];
 var x = [];
 var my = [];
 var mx = [];
+var rabbitX = [];
+var rabbitY = [];
 n = 30;
 
 function setup() {
@@ -14,14 +16,21 @@ function setup() {
   
   //from class example
   //fill up star x,y tables with random numbers
-  for(var i=0; i<n; i++) {
-    y[i] = random(height);
-    x[i] = random(width);
+  for(var s=0; s<n; s++) {
+    y[s] = random(height);
+    x[s] = random(width);
   }
+  
   //fillup the moon x,y tables
   for(var m=0; m<n; m++) {
     my[m] = random(height);
     mx[m] = random(width);
+  }
+  
+  //fillup the rabbit x,y tables
+  for(var r=0; r<n; r++) {
+    rabbitY[r] = random(height);
+    rabbitX[r] = random(width);
   }
 }
 
@@ -33,6 +42,15 @@ function draw() {
   
   for (var i = 0; i < color.length; i++) { 
     
+    //draw rabbit
+    push();
+      noStroke();
+      translate(rabbitX,rabbitY);
+      fill(255,255,255);
+      ellipse(0,0,20,20);
+    pop();
+    
+    //draw cresent moons
     push();
       mx1 = mp1[i];
       my2 = mp2[i];
@@ -46,6 +64,7 @@ function draw() {
       ellipse(mx1,my2,20,20);
     pop();
     
+    //draw stars
     push();
       noStroke();
       var starColor1 = color[i];
