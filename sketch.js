@@ -79,7 +79,7 @@ function draw() {
     //code from class example
     if(mouseIsPressed) {
       if(!dragging && 
-         dist(mouseX, mouseY, x[i], y[i]) < 8) {  
+         dist(mouseX, mouseY, x[i], y[i]) < 8 ) {  
         
         dragging = true;  // start dragging a circle    
         drag = i;  // drag this circle
@@ -87,8 +87,8 @@ function draw() {
       }
     
     } 
-  /*
-    else if(mouseIsPressed) {
+
+    if(mouseIsPressed) {
       if(!dragging && 
          dist(mouseX, mouseY, mx[i], my[i]) < 8) {  
         
@@ -98,7 +98,7 @@ function draw() {
       }
     
     } 
-    */
+
     else {
       dragging = false;  // mouse 
     }
