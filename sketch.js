@@ -1,6 +1,14 @@
-var rectColor = [150, 55, 25];
-var rectSize = [50, 150, 250];
+function preload() {
+  table = loadTable("data.csv", "csv", "header");
+}
+
+var rectColor1 = [150, 55, 25];
+var rectColor2 = [25, 35, 255];
+var rectColor3 = [75, 0, 45];
+//var rectSize = [50, 150, 250];
 var fillColor = [];
+
+var table;
 
 function setup() {
   createCanvas(400, 400);
@@ -8,6 +16,8 @@ function setup() {
 }
 
 function draw() {
+  var rectSize = table.getColumn("rectSize");
+  
   for (var i = 0; i < rectSize.length; i++) {
     push();
       x = rectSize[i];
@@ -33,6 +43,6 @@ function mouseFill(x) {
       fillColor = 255;
     push();
   } else {
-    fillColor= rectColor;
+    fillColor= rectColor1;
   }
 }
