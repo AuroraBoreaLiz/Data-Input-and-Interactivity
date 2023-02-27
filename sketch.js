@@ -12,11 +12,12 @@ var rabbitY = [];
 var color = [];
 var mp1 = [];
 var mp2 = [];
+var Scolor = [];
 n = 30;
 
 function setup() {
   createCanvas(400, 400);
-  color = table.getColumn("starColor1");
+  sColor = table.getColumn("starColor1");
   
   mp1 = table.getColumn("moonPosition1");
   mp2 = table.getColumn("moonPosition2");
@@ -44,7 +45,7 @@ function setup() {
 function draw() {
   background(190,166,222);
  
-  for (var i = 0; i < color.length; i++) { 
+  for (var i = 0; i < sColor.length; i++) { 
     
     //draw rabbit
     push();
@@ -70,7 +71,7 @@ function draw() {
     //draw stars
     push();
       noStroke();
-      var starColor1 = color[i];
+      var starColor1 = sColor[i];
       translate(x[i],y[i]);
       fill(starColor1,0,100);
       star(0, 0, 10, 7, 5);
