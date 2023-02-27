@@ -5,7 +5,7 @@ function preload() {
 var rectColor1 = [150, 55, 25];
 var rectColor2 = [55, 35, 255];
 var rectColor3 = [75, 0, 45];
-var fillColor;
+var fillColor = [];
 
 var table;
 
@@ -28,7 +28,7 @@ function draw() {
       //c2 = rectColor2[i];
       //c3 = rectColor3[i];
       mouseFill(rx,ry,i);
-      fill(fillColor);
+      fill(fillColor[i]);
       rect(rx[i], ry[i], 80, 80);
     pop();
     
@@ -65,7 +65,7 @@ function mouseFill(rx,ry,i) {
       fillColor[0] = 255;
       //rect(x, x, 80, 80);
   } else {
-    fillColor= rectColor1[i];
+    fillColor[0]= rectColor1[i];
   }
 
   if (
@@ -75,9 +75,9 @@ function mouseFill(rx,ry,i) {
     mouseY > 150 &&
     mouseY < 230
   ) {
-      print("Second Box")
-      fillColor[1] = 255;
-      //rect(x, x, 80, 80);
+    print("Second Box")
+    fillColor[1] = 255;
+    //rect(x, x, 80, 80);
 
   } else {
     fillColor[1] = rectColor2[i];
@@ -90,9 +90,9 @@ function mouseFill(rx,ry,i) {
     mouseY > 250 &&
     mouseY < 330
   ) {
-      print("Third Box")
-      fillColor[2] = 255;
-      //rect(x, x, 80, 80);
+    print("Third Box")
+    fillColor[2] = 255;
+    //rect(x, x, 80, 80);
   } else {
     fillColor[2] = rectColor3[i];
   }
