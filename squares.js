@@ -12,27 +12,24 @@ var table;
 function setup() {
   createCanvas(400, 400);
   background(200);
-  var rectxy = table.getColumn("rectxy");
-  var rectColor1 = table.getColumn("rectColor1");
-  var rectColor2 = table.getColumn("rectColor2");
-  var rectColor3 = table.getColumn("rectColor3");
+
+  
 }
 
 function draw() {
-  var rectxy = table.getColumn("rectxy");
+  var rx = table.getColumn("rectx");
+  var ry = table.getColumn("recty");
   
-  var rectColor1 = table.getColumn("rectColor1");
-  var rectColor2 = table.getColumn("rectColor2");
-  var rectColor3 = table.getColumn("rectColor3");
-  for (var i = 0; i < rectxy.length; i++) {
+  for (var i = 0; i < rx.length; i++) {
     push();
-      x = rectxy[i];
-      c1 = rectColor1[i];
-      c2 = rectColor2[i];
-      c3 = rectColor3[i];
-      mouseFill(x,i);
+      x = rx[i];
+      y = ry[i];
+      //c1 = rectColor1[i];
+      //c2 = rectColor2[i];
+      //c3 = rectColor3[i];
+      mouseFill(x,y,i);
       fill(fillColor[i]);
-      rect(x, x, 80, 80);
+      rect(x, y, 80, 80);
     pop();
     
     
@@ -57,8 +54,8 @@ function mouseFill(x,i) {
   }
 }
 */
-//*/
-function mouseFill(x,i) {
+///*
+function mouseFill(x,y,i) {
   if (
     mouseIsPressed &&
     mouseX > 50 &&
