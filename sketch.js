@@ -45,15 +45,14 @@ function draw() {
     //draw rabbit
     push();
       noStroke();
-      translate(rabbitX,rabbitY);
+      translate(rabbitX[i],rabbitY[i]);
       fill(255,255,255);
       ellipse(0,0,20,20);
     pop();
     
     //draw cresent moons
     push();
-      mx1 = mp1[i];
-      my2 = mp2[i];
+
       noStroke();
       translate(mx[i],my[i]);
       fill(230,230,180);
@@ -61,7 +60,7 @@ function draw() {
     
       noStroke();
       fill(190,166,222);
-      ellipse(mx1,my2,20,20);
+      ellipse(mp1[i],mp2[i],20,20);
     pop();
     
     //draw stars
