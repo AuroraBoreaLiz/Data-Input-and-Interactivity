@@ -5,7 +5,7 @@ function preload() {
 var rectColor1 = [150, 55, 25];
 var rectColor2 = [55, 35, 255];
 var rectColor3 = [75, 0, 45];
-var fillColor;
+var fillColor=[];
 
 var table;
 
@@ -22,14 +22,12 @@ function draw() {
   
   for (var i = 0; i < rx.length; i++) {
     push();
-      var x = rx[i];
-      var y = ry[i];
       //c1 = rectColor1[i];
       //c2 = rectColor2[i];
       //c3 = rectColor3[i];
-      mouseFill(rx,ry,i);
-      fill(fillColor);
-      rect(x, y, 80, 80);
+      mouseFill(rx[i],ry[i],i);
+      fill(fillColor[i]);
+      rect(rx[i], ry[i], 80, 80);
     pop();
     
     
@@ -38,17 +36,17 @@ function draw() {
 }
 
 ///*
-function mouseFill(x,y,i) {
+function mouseFill(rx,ry,i) {
   if (
     mouseIsPressed &&
-    (mouseX > (x)) &&
-    (mouseX < (x+80)) &&
-    (mouseY > (y)) &&
-    (mouseY < (y+80))
+    (mouseX > (rx[i])) &&
+    (mouseX < (rx[i]+80)) &&
+    (mouseY > (ry[i])) &&
+    (mouseY < (ry[i]+80))
   ) {
-      fillColor = 255;
+      fillColor[i] = 255;
   } else {
-      fillColor= rectColor1[i];
+      fillColor[i]= rectColor1[i];
   }
 }
 //*/
