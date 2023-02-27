@@ -22,14 +22,14 @@ function draw() {
   
   for (var i = 0; i < rx.length; i++) {
     push();
-      //var x = rx[i];
-      //var y = ry[i];
+      var x = rx[i];
+      var y = ry[i];
       //c1 = rectColor1[i];
       //c2 = rectColor2[i];
       //c3 = rectColor3[i];
       mouseFill(rx,ry,i);
       fill(fillColor);
-      rect(rx[i], ry[i], 80, 80);
+      rect(x, y, 80, 80);
     pop();
     
     
@@ -38,13 +38,13 @@ function draw() {
 }
 
 ///*
-function mouseFill(rx,ry,i) {
+function mouseFill(x,y,i) {
   if (
     mouseIsPressed &&
-    (mouseX > (rx[i])) &&
-    (mouseX < (rx[i]+80)) &&
-    (mouseY > (ry[i])) &&
-    (mouseY < (ry[i]+80))
+    (mouseX > (x)) &&
+    (mouseX < (x+80)) &&
+    (mouseY > (y)) &&
+    (mouseY < (y+80))
   ) {
       fillColor = 255;
   } else {
