@@ -9,13 +9,13 @@ var my = [];
 var mx = [];
 var rabbitX = [];
 var rabbitY = [];
+var rabbitR = [];
 n = 30;
 dragging = false
 drag = -1;
 
 function setup() {
   createCanvas(400, 400);
-  
   //from class example
   //fill up star x,y tables with random numbers
   for(var s=0; s<n; s++) {
@@ -30,9 +30,10 @@ function setup() {
   }
   
   //fillup the rabbit x,y tables
-  for(var r=0; r<n; r++) {
+  for(var r=0; r<8; r++) {
     rabbitY[r] = random(height);
     rabbitX[r] = random(width);
+    rabbitR[r] = random(360);
   }
 }
 
@@ -47,8 +48,9 @@ function draw() {
     //draw rabbit
     push();
       noStroke();
+      //rotate(PI/rabbitR[i]);
       translate(rabbitX[i],rabbitY[i]);
-      fill(255,255,255, mouseY);
+      fill(255,255,255);
       rabbit();
     pop();
     
