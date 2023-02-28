@@ -29,12 +29,22 @@ function draw() {
       //c1 = rectColor1[i];
       //c2 = rectColor2[i];
       //c3 = rectColor3[i];
-      mouseFill(rx,ry,i);
-      fill(fillColor[i]);
+      //mouseFill(rx,ry,i);
+      fill(fillColor[i],0,0);
       rect(rx[i], ry[i], 80, 80);
     pop();
     
-    
+    if (
+    mouseIsPressed &&
+    (mouseX > (rx[i])) &&
+    (mouseX < (rx[i]+80)) &&
+    (mouseY > (ry[i])) &&
+    (mouseY < (ry[i]+80))
+  ) {
+      fillColor[i] = 255;
+  } else {
+      fillColor[i]= rectColor1[i];
+  }
   }
   
 }
@@ -48,13 +58,13 @@ function mouseFill(rx,ry,i) {
     (mouseY > (ry[i])) &&
     (mouseY < (ry[i]+80))
   ) {
-      fillColor = 255;
+      fillColor[i] = 255;
   } else {
-      fillColor= rectColor1[i];
+      fillColor[i]= rectColor1[i];
   }
 }
-*/
-///*
+//*/
+/*
 function mouseFill(rx,ry,i) {
   if (
     mouseIsPressed &&
@@ -99,4 +109,4 @@ function mouseFill(rx,ry,i) {
     fillColor[2] = rectColor3[i];
   }
 }
-//*/
+*/
