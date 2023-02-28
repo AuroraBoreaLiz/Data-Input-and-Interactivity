@@ -1,24 +1,28 @@
-function preload() {
-  table = loadTable("stars.csv", "csv", "header");
-}
+//Script that draws draggable moons, stars, and rabbits
 
+let song;
 var table;
 var y = [];
 var x = [];
 var rotation = [];
 var moonOrStar = [];
-var rabbitX = [];
-var rabbitY = [];
-var rabbitR = [];
-n = 30;
-dragging = false
+var sColor = [];
+n = 40;
+dragging = false;
 drag = -1;
+
+function preload() {
+  table = loadTable("starsMoonRabbit.csv", "csv", "header");
+  //free music archive https://freemusicarchive.org/music/Daniel_Birch/Ambient_Vol3/Music_Box__Sunshine/
+  song = loadSound('assets/Daniel-Birch-Music-Box-Sunshine.mp3');
+}
 
 function setup() {
   createCanvas(400, 400);
   //get things from the csv file
+  song.loop();
   sColor = table.getColumn("starColor1");
-  moonOrStar = table.getColumn("moonOrStar")
+  moonStarOrRabbit = table.getColumn("moonStarOrRabbit")
   
   //from class example
   //fill up star and moon x,y tables with random numbers
@@ -36,7 +40,7 @@ function draw() {
   for (var i = 0; i < sColor.length; i++) { 
     
     //draw cresent moons
-    if (moonOrStar[i] == 0) {
+    if (moonStarOrRabbit[i] == 0) {
     push();
       noStroke();
       translate(x[i],y[i]);
@@ -46,7 +50,7 @@ function draw() {
     }
 
     //draw stars
-    if (moonOrStar[i] == 1) {
+    if (moonStarOrRabbit[i] == 1) {
     push();
       noStroke();
       var starColor1 = sColor[i];
@@ -58,7 +62,7 @@ function draw() {
     }
     
     //draw rabbits
-    if (moonOrStar[i] == 2){
+    if (moonStarOrRabbit[i] == 2){
     push();
       noStroke();
       translate(x[i],y[i]);
@@ -69,7 +73,7 @@ function draw() {
     
     } 
     
-    //code from class example
+    //code from class example for dragging
     if(mouseIsPressed) {
       if(!dragging && 
          dist(mouseX, mouseY, x[i], y[i]) < 15 ) {  
@@ -87,15 +91,16 @@ function draw() {
     }
   }
   
-  // move a star if we're dragging it
-  if(dragging) {  // update the star we're dragging
-    x[drag] = mouseX;  // move star to mouse location
+  // move the object if we're dragging it
+  if(dragging) {  // update the object we're dragging
+    x[drag] = mouseX;  // move object to mouse location
     y[drag] = mouseY;
   }
 
   
 }
 
+//draw a star function
 //code from p5.js star example: https://p5js.org/examples/form-star.html
 function star(x, y, radius1, radius2, npoints) {
   let angle = TWO_PI / npoints;
