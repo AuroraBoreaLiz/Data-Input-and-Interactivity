@@ -30,10 +30,10 @@ function setup() {
   }
   
   //fillup the rabbit x,y tables
-  for(var r=0; r<30; r++) {
+  for(var r=0; r<10; r++) {
     rabbitY[r] = random(height);
     rabbitX[r] = random(width);
-    rabbitR[r] = random(.5);
+    rabbitR[r] = random(0.5);
   }
 }
 
@@ -43,16 +43,17 @@ function draw() {
   var mp1 = table.getColumn("moonPosition1");
   var mp2 = table.getColumn("moonPosition2");
   
-  for (var i = 0; i < color.length; i++) { 
-    
-    //draw rabbit
+   for (var k = 0; k < rabbitR.length; k++) {
+  //draw rabbit
     push();
       noStroke();
-      rotate(PI/rabbitR[i]);
-      translate(rabbitX[i],rabbitY[i]);
+      translate(rabbitX[k],rabbitY[k]);
+      rotate(PI/rabbitR[k]);
       fill(255,255,255);
-      rabbit();      
+      rabbit();
     pop();
+   }
+  for (var i = 0; i < color.length; i++) { 
     
     //draw cresent moons
     push();
@@ -77,14 +78,24 @@ function draw() {
     pop();
       
     
-    
     //code from class example
     if(mouseIsPressed) {
       if(!dragging && 
-         (dist((mouseX, mouseY, x[i], y[i]) < 8) ||(mouseX,mouseY,mx[i],my[i]>10))) {  
+         dist(mouseX, mouseY, x[i], y[i]) < 8 ) {  
         
         dragging = true;  // start dragging a circle    
         drag = i;  // drag this circle
+      
+      }
+    
+    } 
+
+    if(mouseIsPressed) {
+      if(!dragging && 
+         dist(mouseX, mouseY, mx[i], my[i]) < 8) {  
+        
+        dragging = true;  // start dragging a moon    
+        drag = i;  // drag this moon
       
       }
     
@@ -99,9 +110,15 @@ function draw() {
   if(dragging) {  // update the star we're dragging
     x[drag] = mouseX;  // move star to mouse location
     y[drag] = mouseY;
+  }
+  
+    // move a moon if we're dragging it
+  if(dragging) {  // update the moon we're dragging
+    // move moon to mouse location
     mx[drag] = mouseX;
     my[drag] = mouseY;
   }
+
   
 }
 
