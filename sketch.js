@@ -8,6 +8,8 @@ var x = [];
 var my = [];
 var mx = [];
 var mr = [];
+var mp1 = [];
+var mp2 = [];
 var rabbitX = [];
 var rabbitY = [];
 var rabbitR = [];
@@ -17,6 +19,9 @@ drag = -1;
 
 function setup() {
   createCanvas(400, 400);
+  sColor = table.getColumn("starColor1");
+  mp1 = table.getColumn("moonPosition1");
+  mp2 = table.getColumn("moonPosition2");
   //from class example
   //fill up star x,y tables with random numbers
   for(var s=0; s<n; s++) {
@@ -41,9 +46,6 @@ function setup() {
 
 function draw() {
   background(190,166,222);
-  var color = table.getColumn("starColor1");
-  var mp1 = table.getColumn("moonPosition1");
-  var mp2 = table.getColumn("moonPosition2");
   
   //draw rabbits with random xform and rotation
   for (var k = 0; k < rabbitR.length; k++) {
@@ -56,7 +58,7 @@ function draw() {
     pop();
    }
   
-  for (var i = 0; i < color.length; i++) { 
+  for (var i = 0; i < sColor.length; i++) { 
     
     //draw cresent moons
     push();
@@ -69,7 +71,7 @@ function draw() {
     //draw stars
     push();
       noStroke();
-      var starColor1 = color[i];
+      var starColor1 = sColor[i];
       translate(x[i],y[i]);
       fill(starColor1,0,100);
       star(0, 0, 10, 7, 5);
