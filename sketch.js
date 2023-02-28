@@ -43,7 +43,7 @@ function draw() {
   var mp1 = table.getColumn("moonPosition1");
   var mp2 = table.getColumn("moonPosition2");
   
-   for (var k = 0; k < rabbitR.length; k++) {
+  for (var k = 0; k < rabbitR.length; k++) {
   //draw rabbit
     push();
       noStroke();
@@ -87,17 +87,7 @@ function draw() {
         drag = i;  // drag this circle
       
       }
-    
-    } 
-
-    if(mouseIsPressed) {
-      if(!dragging && 
-         dist(mouseX, mouseY, mx[i], my[i]) < 8) {  
-        
-        dragging = true;  // start dragging a moon    
-        drag = i;  // drag this moon
-      
-      }
+  
     
     } 
 
@@ -110,13 +100,6 @@ function draw() {
   if(dragging) {  // update the star we're dragging
     x[drag] = mouseX;  // move star to mouse location
     y[drag] = mouseY;
-  }
-  
-    // move a moon if we're dragging it
-  if(dragging) {  // update the moon we're dragging
-    // move moon to mouse location
-    mx[drag] = mouseX;
-    my[drag] = mouseY;
   }
 
   
