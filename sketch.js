@@ -10,6 +10,7 @@ var mx = [];
 var mr = [];
 var mp1 = [];
 var mp2 = [];
+var moonOrStar = [];
 var rabbitX = [];
 var rabbitY = [];
 var rabbitR = [];
@@ -19,9 +20,12 @@ drag = -1;
 
 function setup() {
   createCanvas(400, 400);
+  //get things from the csv file
   sColor = table.getColumn("starColor1");
   mp1 = table.getColumn("moonPosition1");
   mp2 = table.getColumn("moonPosition2");
+  moonOrStar = table.getColumn("moonOrStar")
+  
   //from class example
   //fill up star x,y tables with random numbers
   for(var s=0; s<n; s++) {
@@ -60,22 +64,27 @@ function draw() {
   
   for (var i = 0; i < sColor.length; i++) { 
     
+    if (moonOrStar[i] == 0) {
     //draw cresent moons
     push();
       noStroke();
-      translate(mx[i],my[i]);
+      translate(x[i],y[i]);
       rotate(PI/mr[i]);
       moon();
     pop();
+    }
+
     
-    //draw stars
+    if (moonOrStar[i] == 1) {
     push();
       noStroke();
       var starColor1 = sColor[i];
       translate(x[i],y[i]);
+      rotate(PI/mr[i]);
       fill(starColor1,0,100);
       star(0, 0, 10, 7, 5);
     pop();
+    }
       
     
     //code from class example
