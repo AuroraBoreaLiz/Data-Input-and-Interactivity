@@ -9,18 +9,12 @@ var my = [];
 var mx = [];
 var rabbitX = [];
 var rabbitY = [];
-var color = [];
-var mp1 = [];
-var mp2 = [];
-var Scolor = [];
 n = 30;
+dragging = false
+drag = -1;
 
 function setup() {
   createCanvas(400, 400);
-  sColor = table.getColumn("starColor1");
-  
-  mp1 = table.getColumn("moonPosition1");
-  mp2 = table.getColumn("moonPosition2");
   
   //from class example
   //fill up star x,y tables with random numbers
@@ -44,14 +38,17 @@ function setup() {
 
 function draw() {
   background(190,166,222);
- 
-  for (var i = 0; i < sColor.length; i++) { 
+  var color = table.getColumn("starColor1");
+  var mp1 = table.getColumn("moonPosition1");
+  var mp2 = table.getColumn("moonPosition2");
+  
+  for (var i = 0; i < color.length; i++) { 
     
     //draw rabbit
     push();
       noStroke();
       translate(rabbitX[i],rabbitY[i]);
-      fill(255,255,255);
+      fill(255,255,255, mouseY);
       ellipse(0,0,20,20);
     pop();
     
@@ -71,7 +68,7 @@ function draw() {
     //draw stars
     push();
       noStroke();
-      var starColor1 = sColor[i];
+      var starColor1 = color[i];
       translate(x[i],y[i]);
       fill(starColor1,0,100);
       star(0, 0, 10, 7, 5);
@@ -94,8 +91,8 @@ function draw() {
       if(!dragging && 
          dist(mouseX, mouseY, mx[i], my[i]) < 8) {  
         
-        dragging = true;  // start dragging a circle    
-        drag = i;  // drag this circle
+        dragging = true;  // start dragging a moon    
+        drag = i;  // drag this moon
       
       }
     
@@ -110,6 +107,8 @@ function draw() {
   if(dragging) {  // update the circle we're dragging
     x[drag] = mouseX;  // move circle to mouse location
     y[drag] = mouseY;
+    mx[drag] = mouseX;
+    my[drag] = mouseY;
   }
 
   
