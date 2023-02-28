@@ -103,10 +103,15 @@ function draw() {
     }
   }
   
-  // move a circle if we're dragging it
-  if(dragging) {  // update the circle we're dragging
-    x[drag] = mouseX;  // move circle to mouse location
+  // move a star if we're dragging it
+  if(dragging) {  // update the star we're dragging
+    x[drag] = mouseX;  // move star to mouse location
     y[drag] = mouseY;
+  }
+  
+    // move a moon if we're dragging it
+  if(dragging) {  // update the moon we're dragging
+    // move moon to mouse location
     mx[drag] = mouseX;
     my[drag] = mouseY;
   }
