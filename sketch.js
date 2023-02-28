@@ -49,7 +49,7 @@ function draw() {
       noStroke();
       translate(rabbitX[i],rabbitY[i]);
       fill(255,255,255, mouseY);
-      ellipse(0,0,20,20);
+      rabbit();
     pop();
     
     //draw cresent moons
