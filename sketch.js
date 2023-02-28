@@ -7,6 +7,7 @@ var y = [];
 var x = [];
 var my = [];
 var mx = [];
+var mr = [];
 var rabbitX = [];
 var rabbitY = [];
 var rabbitR = [];
@@ -27,8 +28,9 @@ function setup() {
   for(var m=0; m<n; m++) {
     my[m] = random(height);
     mx[m] = random(width);
+    mr[m] = random(0.5);
   }
-  
+ 
   //fillup the rabbit x,y tables
   for(var r=0; r<10; r++) {
     rabbitY[r] = random(height);
@@ -43,8 +45,8 @@ function draw() {
   var mp1 = table.getColumn("moonPosition1");
   var mp2 = table.getColumn("moonPosition2");
   
+  //draw rabbits with random xform and rotation
   for (var k = 0; k < rabbitR.length; k++) {
-  //draw rabbit
     push();
       noStroke();
       translate(rabbitX[k],rabbitY[k]);
@@ -53,19 +55,15 @@ function draw() {
       rabbit();
     pop();
    }
+  
   for (var i = 0; i < color.length; i++) { 
     
     //draw cresent moons
     push();
-
       noStroke();
       translate(mx[i],my[i]);
-      fill(230,230,180);
-      ellipse(0,0,25,25);
-    
-      noStroke();
-      fill(190,166,222);
-      ellipse(mp1[i],mp2[i],20,20);
+      rotate(PI/mr[i]);
+      moon();
     pop();
     
     //draw stars
