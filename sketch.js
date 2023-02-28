@@ -1,15 +1,15 @@
 //Script that draws draggable moons, stars, and rabbits
 
-let song;
+var song;
 var table;
 var y = [];
 var x = [];
 var rotation = [];
 var moonOrStar = [];
 var sColor = [];
-n = 40;
-dragging = false;
-drag = -1;
+var n = 40;
+var dragging = false;
+var drag = -1;
 
 function preload() {
   //load in the table of data
