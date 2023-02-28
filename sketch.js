@@ -5,11 +5,7 @@ function preload() {
 var table;
 var y = [];
 var x = [];
-var my = [];
-var mx = [];
-var mr = [];
-var mp1 = [];
-var mp2 = [];
+var rotation = [];
 var moonOrStar = [];
 var rabbitX = [];
 var rabbitY = [];
@@ -22,75 +18,61 @@ function setup() {
   createCanvas(400, 400);
   //get things from the csv file
   sColor = table.getColumn("starColor1");
-  mp1 = table.getColumn("moonPosition1");
-  mp2 = table.getColumn("moonPosition2");
   moonOrStar = table.getColumn("moonOrStar")
   
   //from class example
-  //fill up star x,y tables with random numbers
+  //fill up star and moon x,y tables with random numbers
   for(var s=0; s<n; s++) {
     y[s] = random(height);
     x[s] = random(width);
-  }
-  
-  //fillup the moon x,y tables
-  for(var m=0; m<n; m++) {
-    my[m] = random(height);
-    mx[m] = random(width);
-    mr[m] = random(0.5);
+    rotation[s] = random(0.5);
   }
  
-  //fillup the rabbit x,y tables
-  for(var r=0; r<10; r++) {
-    rabbitY[r] = random(height);
-    rabbitX[r] = random(width);
-    rabbitR[r] = random(0.5);
-  }
 }
 
 function draw() {
   background(190,166,222);
-  
-  //draw rabbits with random xform and rotation
-  for (var k = 0; k < rabbitR.length; k++) {
-    push();
-      noStroke();
-      translate(rabbitX[k],rabbitY[k]);
-      rotate(PI/rabbitR[k]);
-      fill(255,255,255);
-      rabbit();
-    pop();
-   }
-  
+   
   for (var i = 0; i < sColor.length; i++) { 
     
-    if (moonOrStar[i] == 0) {
     //draw cresent moons
+    if (moonOrStar[i] == 0) {
     push();
       noStroke();
       translate(x[i],y[i]);
-      rotate(PI/mr[i]);
+      rotate(PI/rotation[i]);
       moon();
     pop();
     }
 
-    
+    //draw stars
     if (moonOrStar[i] == 1) {
     push();
       noStroke();
       var starColor1 = sColor[i];
       translate(x[i],y[i]);
-      rotate(PI/mr[i]);
+      rotate(PI/rotation[i]);
       fill(starColor1,0,100);
       star(0, 0, 10, 7, 5);
     pop();
     }
-      
+    
+    //draw rabbits
+    if (moonOrStar[i] == 2){
+    push();
+      noStroke();
+      translate(x[i],y[i]);
+      rotate(PI/rotation[i]);
+      fill(255,255,255);
+      rabbit();
+    pop();
+    
+    } 
     
     //code from class example
     if(mouseIsPressed) {
       if(!dragging && 
-         dist(mouseX, mouseY, x[i], y[i]) < 8 ) {  
+         dist(mouseX, mouseY, x[i], y[i]) < 15 ) {  
         
         dragging = true;  // start dragging a circle    
         drag = i;  // drag this circle
